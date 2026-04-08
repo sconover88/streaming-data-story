@@ -5,8 +5,15 @@ import { PlatformToggle } from '../ui/PlatformToggle';
 import { SubscriberLineChart } from '../charts/SubscriberLineChart';
 
 export function BigPictureSection() {
-  const { platforms } = usePlatforms();
-  const [selected, setSelected] = useState<number[]>(platforms.map(p => p.id));
+  const { platforms, loading } = usePlatforms();
+  const [selected, setSelected] = useState<number[]>([]);
+
+  // When platforms load, select all by default
+  React.useEffect(() => {
+    if (!loading && platforms.length > 0 && selected.length === 0) {
+      setSelected(platforms.map(p => p.id));
+    }
+  }, [loading, platforms]);
 
   return (
     <section id="big-picture" className="py-24 max-w-5xl mx-auto px-4">

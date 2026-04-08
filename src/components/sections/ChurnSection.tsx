@@ -7,9 +7,15 @@ import { ChurnReasonBarChart } from '../charts/ChurnReasonBarChart';
 import { CHURN_REASONS } from '../../lib/constants';
 
 export function ChurnSection() {
-  const { platforms } = usePlatforms();
-  const [selected, setSelected] = useState<number[]>(platforms.map(p => p.id));
+  const { platforms, loading } = usePlatforms();
+  const [selected, setSelected] = useState<number[]>([]);
   const [reason, setReason] = useState<string | null>(null);
+
+  React.useEffect(() => {
+    if (!loading && platforms.length > 0 && selected.length === 0) {
+      setSelected(platforms.map(p => p.id));
+    }
+  }, [loading, platforms]);
 
   return (
     <section id="churn" className="py-24 max-w-5xl mx-auto px-4">

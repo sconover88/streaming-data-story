@@ -7,9 +7,15 @@ import { EngagementBarChart } from '../charts/EngagementBarChart';
 import { YEARS } from '../../lib/constants';
 
 export function EngagementSection() {
-  const { platforms } = usePlatforms();
-  const [selected, setSelected] = useState<number[]>(platforms.map(p => p.id));
+  const { platforms, loading } = usePlatforms();
+  const [selected, setSelected] = useState<number[]>([]);
   const [year, setYear] = useState<number>(YEARS[YEARS.length - 1]);
+
+  React.useEffect(() => {
+    if (!loading && platforms.length > 0 && selected.length === 0) {
+      setSelected(platforms.map(p => p.id));
+    }
+  }, [loading, platforms]);
 
   return (
     <section id="engagement" className="py-24 max-w-5xl mx-auto px-4">
