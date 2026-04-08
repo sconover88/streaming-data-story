@@ -34,7 +34,7 @@ export function ContentStackedBarChart({ selectedYear, selectedPlatformIds }: Co
   return (
     <ChartWrapper title="Content Library Mix" desc={`Content mix by type for each platform in ${selectedYear}`}>
       <ResponsiveContainer width="100%" height={360}>
-        <BarChart data={data} margin={{ top: 16, right: 32, left: 0, bottom: 8 }} barCategoryGap={32}>
+        <BarChart data={data} margin={{ top: 16, right: 32, left: 0, bottom: 8 }} barCategoryGap={24} barGap={4}>
           <CartesianGrid strokeDasharray="3 3" stroke="#333" />
           <XAxis dataKey="platform" tick={{ fill: '#ccc', fontSize: 12 }} />
           <YAxis tick={{ fill: '#ccc', fontSize: 12 }} />
@@ -49,11 +49,11 @@ export function ContentStackedBarChart({ selectedYear, selectedPlatformIds }: Co
             <Bar
               key={type}
               dataKey={type}
-              stackId="a"
               fill={CONTENT_TYPE_COLORS[type] || '#a259ec'}
               isAnimationActive={false}
               style={{ pointerEvents: 'none' }}
               name={type}
+              // No stackId: grouped bars
             />
           ))}
         </BarChart>
