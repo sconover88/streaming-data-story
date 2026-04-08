@@ -21,14 +21,13 @@ export function ContentStackedBarChart({ selectedYear, selectedPlatformIds }: Co
   const data = platforms
     .filter(p => selectedPlatformIds.includes(p.id))
     .map(platform => {
-      const row: any = { platform: platform.name };
+      const row: any = { platform: platform.name, color: platform.color };
       CONTENT_TYPES.forEach(type => {
         const entry = contentLibrary.find(
           d => d.platform_id === platform.id && d.year === selectedYear && d.content_type === type
         );
         row[type] = entry ? entry.title_count : 0;
       });
-      row.color = platform.color;
       return row;
     });
 
@@ -39,15 +38,26 @@ export function ContentStackedBarChart({ selectedYear, selectedPlatformIds }: Co
           <CartesianGrid strokeDasharray="3 3" stroke="#333" />
           <XAxis dataKey="platform" tick={{ fill: '#ccc', fontSize: 12 }} />
           <YAxis tick={{ fill: '#ccc', fontSize: 12 }} />
-          <Tooltip contentStyle={{ background: '#18181b', border: 'none', color: '#fff' }} />
+          <Tooltip 
+            contentStyle={{ background: '#18181b', border: 'none', color: '#fff' }}
+            labelStyle={{ color: '#fff' }}
+            itemStyle={{ color: '#fff' }}
+            cursor={{ fill: 'rgba(162,89,236,0.08)' }}
+          />
           <Legend wrapperStyle={{ color: '#fff' }} />
           {CONTENT_TYPES.map(type => (
             <Bar
               key={type}
               dataKey={type}
               stackId="a"
-              fill="#a259ec"
               isAnimationActive={false}
+              style={{ pointerEvents: 'none' }}
+              shape={props => {
+                // Get the platform color for this bar segment
+                const { x, y, width, height, index } = props;
+                const color = data[index]?.color || '#a259ec';
+                return <rect x={x} y={y} width={width} height={height} fill={color} rx={3} />;
+              }}
             />
           ))}
         </BarChart>
