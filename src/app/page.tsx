@@ -1,3 +1,4 @@
+"use client";
 import { HeroSection } from '../components/sections/HeroSection';
 import { BigPictureSection } from '../components/sections/BigPictureSection';
 import { DivergenceSection } from '../components/sections/DivergenceSection';
