@@ -4,6 +4,8 @@ import { usePlatforms } from '../../hooks/usePlatforms';
 import { PlatformToggle } from '../ui/PlatformToggle';
 import { YearFilter } from '../ui/YearFilter';
 import { EngagementBarChart } from '../charts/EngagementBarChart';
+import { EngagementCompletionBarChart } from '../charts/EngagementCompletionBarChart';
+import { EngagementHoursBarChart } from '../charts/EngagementHoursBarChart';
 import { YEARS } from '../../lib/constants';
 
 export function EngagementSection() {
@@ -33,8 +35,9 @@ export function EngagementSection() {
         <PlatformToggle platforms={platforms} selected={selected} onChange={setSelected} />
         <YearFilter years={YEARS as unknown as number[]} selected={year} onChange={setYear} />
       </div>
-      <div aria-live="polite">
-        <EngagementBarChart selectedYear={year} selectedPlatformIds={selected} />
+      <div aria-live="polite" className="space-y-12">
+        <EngagementCompletionBarChart selectedYear={year} selectedPlatformIds={selected} />
+        <EngagementHoursBarChart selectedYear={year} selectedPlatformIds={selected} />
       </div>
     </section>
   );
