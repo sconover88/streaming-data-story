@@ -1,0 +1,33 @@
+import React, { useState } from 'react';
+import { ScrollReveal } from '../ui/ScrollReveal';
+import { usePlatforms } from '../../hooks/usePlatforms';
+import { PlatformToggle } from '../ui/PlatformToggle';
+import { YearFilter } from '../ui/YearFilter';
+import { ContentStackedBarChart } from '../charts/ContentStackedBarChart';
+import { YEARS } from '../../lib/constants';
+
+export function ContentSection() {
+  const { platforms } = usePlatforms();
+  const [selected, setSelected] = useState<number[]>(platforms.map(p => p.id));
+  const [year, setYear] = useState<number>(YEARS[YEARS.length - 1]);
+
+  return (
+    <section id="content" className="py-24 max-w-5xl mx-auto px-4">
+      <ScrollReveal>
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          Content is King: Strategy Matters
+        </h2>
+      </ScrollReveal>
+      <ScrollReveal delay={0.15}>
+        <p className="text-lg text-gray-300 mb-8 max-w-2xl">
+          Platforms that invested in original content are retaining subscribers. Those that relied on licensed content are losing ground. Let’s break down the content mix.
+        </p>
+      </ScrollReveal>
+      <div className="mb-4 flex flex-wrap gap-4 items-center">
+        <PlatformToggle platforms={platforms} selected={selected} onChange={setSelected} />
+        <YearFilter years={YEARS as unknown as number[]} selected={year} onChange={setYear} />
+      </div>
+      <ContentStackedBarChart selectedYear={year} selectedPlatformIds={selected} />
+    </section>
+  );
+}
