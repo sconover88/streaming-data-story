@@ -1,4 +1,3 @@
-"use client";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -18,10 +17,7 @@ export const metadata: Metadata = {
   description: "A scrollable, interactive data story about streaming platforms, content strategy, and subscriber trends.",
 };
 
-import { Header } from '../components/layout/Header';
-import { Footer } from '../components/layout/Footer';
-import { SkipNav } from '../components/layout/SkipNav';
-import { MotionProvider } from '../components/providers/MotionProvider';
+import ClientLayout from "./client-layout";
 
 export default function RootLayout({
   children,
@@ -34,14 +30,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-gray-950 text-white">
-        <MotionProvider>
-          <SkipNav />
-          <Header />
-          <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">
-            {children}
-          </main>
-          <Footer />
-        </MotionProvider>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );
