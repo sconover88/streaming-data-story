@@ -3,7 +3,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend, Cart
 import { useContentLibrary } from '../../hooks/useContentLibrary';
 import { usePlatforms } from '../../hooks/usePlatforms';
 import { ChartWrapper } from '../ui/ChartWrapper';
-import { CONTENT_TYPES, YEARS } from '../../lib/constants';
+import { CONTENT_TYPES, YEARS, CONTENT_TYPE_COLORS } from '../../lib/constants';
 
 interface ContentStackedBarChartProps {
   selectedYear: number;
@@ -34,7 +34,7 @@ export function ContentStackedBarChart({ selectedYear, selectedPlatformIds }: Co
   return (
     <ChartWrapper title="Content Library Mix" desc={`Content mix by type for each platform in ${selectedYear}`}>
       <ResponsiveContainer width="100%" height={360}>
-        <BarChart data={data} margin={{ top: 16, right: 32, left: 0, bottom: 8 }}>
+        <BarChart data={data} margin={{ top: 16, right: 32, left: 0, bottom: 8 }} barCategoryGap={32}>
           <CartesianGrid strokeDasharray="3 3" stroke="#333" />
           <XAxis dataKey="platform" tick={{ fill: '#ccc', fontSize: 12 }} />
           <YAxis tick={{ fill: '#ccc', fontSize: 12 }} />
@@ -50,14 +50,10 @@ export function ContentStackedBarChart({ selectedYear, selectedPlatformIds }: Co
               key={type}
               dataKey={type}
               stackId="a"
+              fill={CONTENT_TYPE_COLORS[type] || '#a259ec'}
               isAnimationActive={false}
               style={{ pointerEvents: 'none' }}
-              shape={props => {
-                // Get the platform color for this bar segment
-                const { x, y, width, height, index } = props;
-                const color = data[index]?.color || '#a259ec';
-                return <rect x={x} y={y} width={width} height={height} fill={color} rx={3} />;
-              }}
+              name={type}
             />
           ))}
         </BarChart>

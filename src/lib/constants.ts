@@ -1,3 +1,12 @@
+// Colors for each content type (category)
+export const CONTENT_TYPE_COLORS: Record<string, string> = {
+  'Original Series': '#a259ec',
+  'Licensed Series': '#f24e1e',
+  'Original Film': '#2ecc40',
+  'Licensed Film': '#ffbe0b',
+  'Documentary': '#3fa7d6',
+  'Live/Sports': '#ff006e',
+};
 // Shared constants for the app
 
 export const SECTION_IDS = {
