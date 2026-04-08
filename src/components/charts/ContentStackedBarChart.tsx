@@ -46,7 +46,7 @@ export function ContentStackedBarChart({ selectedYear, selectedPlatformIds }: Co
               key={type}
               dataKey={type}
               stackId="a"
-              fill="#8884d8"
+              fill="#a259ec"
               isAnimationActive={false}
             />
           ))}
