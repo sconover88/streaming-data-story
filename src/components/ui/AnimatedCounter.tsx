@@ -29,7 +29,7 @@ export function AnimatedCounter({ value, duration = 1200, className = '' }: Anim
   }, [value, duration, reducedMotion]);
 
   return (
-    <span ref={ref} className={className} aria-live="polite">
+    <span ref={ref} className={className} aria-live="polite" aria-atomic="true">
       {display}
     </span>
   );

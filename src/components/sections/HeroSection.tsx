@@ -5,7 +5,7 @@ export function HeroSection() {
   return (
     <section id="hero" className="min-h-screen flex flex-col justify-center items-center text-center bg-gradient-to-b from-gray-950 to-gray-900 py-24">
       <ScrollReveal>
-        <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4">
+        <h1 id="hero-heading" className="text-4xl md:text-6xl font-extrabold text-white mb-4">
           Streaming Isn’t Growing Anymore — It’s Reshuffling
         </h1>
       </ScrollReveal>
@@ -16,7 +16,9 @@ export function HeroSection() {
       </ScrollReveal>
       <ScrollReveal delay={0.4}>
         <div className="animate-bounce mt-8" aria-hidden="true">
-          <svg width="32" height="32" fill="none" viewBox="0 0 32 32">
+          <svg width="32" height="32" fill="none" viewBox="0 0 32 32" aria-label="Scroll down arrow" role="img">
+            <title>Scroll down</title>
+            <desc>Animated arrow indicating to scroll down</desc>
             <path d="M16 6v20m0 0l-6-6m6 6l6-6" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </div>

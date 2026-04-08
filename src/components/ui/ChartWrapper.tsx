@@ -23,8 +23,9 @@ export function ChartWrapper({
       role="img"
       aria-label={ariaLabel || title}
       className={className}
+      tabIndex={0}
     >
-      <figcaption className="sr-only">
+      <figcaption className="text-gray-100 text-base mb-2">
         <strong>{title}</strong>
         {desc && <span> — {desc}</span>}
       </figcaption>

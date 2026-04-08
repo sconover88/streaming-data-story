@@ -10,7 +10,13 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     <MotionProvider>
       <SkipNav />
       <Header />
-      <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="flex-1 focus:outline-none"
+        role="main"
+        aria-label="Main content"
+      >
         {children}
       </main>
       <Footer />

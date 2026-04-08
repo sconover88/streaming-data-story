@@ -14,12 +14,12 @@ export function EngagementSection() {
   return (
     <section id="engagement" className="py-24 max-w-5xl mx-auto px-4">
       <ScrollReveal>
-        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+        <h2 id="engagement-heading" className="text-3xl md:text-4xl font-bold text-white mb-4">
           Engagement Tells the Story
         </h2>
       </ScrollReveal>
       <ScrollReveal delay={0.15}>
-        <p className="text-lg text-gray-300 mb-8 max-w-2xl">
+        <p className="text-lg text-gray-200 mb-8 max-w-2xl">
           Original content drives higher engagement. Let’s compare completion rates and hours watched by content type.
         </p>
       </ScrollReveal>
@@ -27,7 +27,9 @@ export function EngagementSection() {
         <PlatformToggle platforms={platforms} selected={selected} onChange={setSelected} />
         <YearFilter years={YEARS as unknown as number[]} selected={year} onChange={setYear} />
       </div>
-      <EngagementBarChart selectedYear={year} selectedPlatformIds={selected} />
+      <div aria-live="polite">
+        <EngagementBarChart selectedYear={year} selectedPlatformIds={selected} />
+      </div>
     </section>
   );
 }

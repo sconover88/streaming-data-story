@@ -13,8 +13,9 @@ export function YearFilter({ years, selected, onChange }: YearFilterProps) {
         <button
           key={year}
           type="button"
-          className={`px-3 py-1 rounded font-medium border-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-sm ${selected === year ? 'bg-white text-gray-900 border-white' : 'bg-gray-800 text-gray-200 border-gray-700'}`}
+          className={`min-w-[44px] min-h-[44px] px-3 py-2 rounded font-medium border-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-sm ${selected === year ? 'bg-white text-gray-900 border-white' : 'bg-gray-900 text-gray-100 border-gray-700'}`}
           aria-pressed={selected === year}
+          aria-label={`Select year ${year}`}
           onClick={() => onChange(year)}
         >
           {year}

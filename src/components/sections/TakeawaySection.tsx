@@ -23,16 +23,16 @@ export function TakeawaySection() {
   return (
     <section id="takeaway" className="py-24 max-w-5xl mx-auto px-4">
       <ScrollReveal>
-        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+        <h2 id="takeaway-heading" className="text-3xl md:text-4xl font-bold text-white mb-4">
           The Takeaway: Invest in Originals
         </h2>
       </ScrollReveal>
       <ScrollReveal delay={0.15}>
-        <p className="text-lg text-gray-300 mb-8 max-w-2xl">
+        <p className="text-lg text-gray-200 mb-8 max-w-2xl">
           If you’re not investing in originals, you’re renting an audience. The data is clear: content strategy is the key to retention and growth.
         </p>
       </ScrollReveal>
-      <div className="flex flex-wrap gap-6 justify-center mb-12">
+      <div className="flex flex-wrap gap-6 justify-center mb-12" aria-live="polite">
         <InsightCard
           title="VuePlus Growth (2022–2024)"
           value={<AnimatedCounter value={vuePlusGrowth} />}
@@ -42,7 +42,7 @@ export function TakeawaySection() {
         {/* Add more InsightCards for other key stats as desired */}
       </div>
       <ScrollReveal delay={0.3}>
-        <div className="bg-gray-900 rounded-lg p-8 text-xl text-center text-white font-semibold shadow-lg max-w-2xl mx-auto">
+        <div className="bg-gray-900 rounded-lg p-8 text-xl text-center text-white font-semibold shadow-lg max-w-2xl mx-auto" aria-label="Key takeaway summary">
           <p>
             <span className="text-blue-400">If you’re not investing in originals, you’re renting an audience.</span> <br />
             The data is clear: content strategy is the key to retention and growth.

@@ -14,12 +14,12 @@ export function ChurnSection() {
   return (
     <section id="churn" className="py-24 max-w-5xl mx-auto px-4">
       <ScrollReveal>
-        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+        <h2 id="churn-heading" className="text-3xl md:text-4xl font-bold text-white mb-4">
           The Churn Problem
         </h2>
       </ScrollReveal>
       <ScrollReveal delay={0.15}>
-        <p className="text-lg text-gray-300 mb-8 max-w-2xl">
+        <p className="text-lg text-gray-200 mb-8 max-w-2xl">
           Churn rates are closely tied to content investment. The #1 reason people leave is content — not price. Let’s dig into the churn data.
         </p>
       </ScrollReveal>
@@ -28,8 +28,9 @@ export function ChurnSection() {
         <div className="flex gap-2" role="radiogroup" aria-label="Churn reason filter">
           <button
             type="button"
-            className={`px-3 py-1 rounded font-medium border-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-sm ${reason === null ? 'bg-white text-gray-900 border-white' : 'bg-gray-800 text-gray-200 border-gray-700'}`}
+            className={`min-w-[44px] min-h-[44px] px-3 py-2 rounded font-medium border-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-sm ${reason === null ? 'bg-white text-gray-900 border-white' : 'bg-gray-900 text-gray-100 border-gray-700'}`}
             aria-pressed={reason === null}
+            aria-label="Show all churn reasons"
             onClick={() => setReason(null)}
           >
             All Reasons
@@ -38,8 +39,9 @@ export function ChurnSection() {
             <button
               key={r}
               type="button"
-              className={`px-3 py-1 rounded font-medium border-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-sm ${reason === r ? 'bg-white text-gray-900 border-white' : 'bg-gray-800 text-gray-200 border-gray-700'}`}
+              className={`min-w-[44px] min-h-[44px] px-3 py-2 rounded font-medium border-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-sm ${reason === r ? 'bg-white text-gray-900 border-white' : 'bg-gray-900 text-gray-100 border-gray-700'}`}
               aria-pressed={reason === r}
+              aria-label={`Show churn reason ${r}`}
               onClick={() => setReason(r)}
             >
               {r}
@@ -47,8 +49,10 @@ export function ChurnSection() {
           ))}
         </div>
       </div>
-      <ChurnLineChart selectedPlatformIds={selected} selectedReason={reason} />
-      <div className="mt-12">
+      <div aria-live="polite">
+        <ChurnLineChart selectedPlatformIds={selected} selectedReason={reason} />
+      </div>
+      <div className="mt-12" aria-live="polite">
         <ChurnReasonBarChart selectedPlatformIds={selected} selectedQuarter={null} />
       </div>
     </section>

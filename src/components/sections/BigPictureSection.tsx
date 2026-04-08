@@ -11,19 +11,21 @@ export function BigPictureSection() {
   return (
     <section id="big-picture" className="py-24 max-w-5xl mx-auto px-4">
       <ScrollReveal>
-        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+        <h2 id="big-picture-heading" className="text-3xl md:text-4xl font-bold text-white mb-4">
           The Big Picture: Industry Overview
         </h2>
       </ScrollReveal>
       <ScrollReveal delay={0.15}>
-        <p className="text-lg text-gray-300 mb-8 max-w-2xl">
-          Total streaming subscribers are still growing, but the story is more complex. Some platforms are surging, others are treading water, and some are in freefall. Let’s see how the landscape is shifting.
+        <p className="text-lg text-gray-200 mb-8 max-w-2xl">
+          Total streaming subscribers are still growing, but the story is more complex. Some platforms are surging, others are treading water, and some are in freefall. Lets see how the landscape is shifting.
         </p>
       </ScrollReveal>
       <div className="mb-6">
         <PlatformToggle platforms={platforms} selected={selected} onChange={setSelected} />
       </div>
-      <SubscriberLineChart selectedPlatformIds={selected} />
+      <div aria-live="polite">
+        <SubscriberLineChart selectedPlatformIds={selected} />
+      </div>
     </section>
   );
 }

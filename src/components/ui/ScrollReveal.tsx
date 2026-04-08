@@ -40,7 +40,7 @@ export function ScrollReveal({
 
   if (reducedMotion) {
     return (
-      <div ref={ref} className={className}>
+      <div ref={ref} className={className} role="region" aria-label="Revealed content">
         {children}
       </div>
     );
@@ -54,6 +54,8 @@ export function ScrollReveal({
       animate={isInView ? 'visible' : 'hidden'}
       variants={variants}
       aria-hidden={!isInView}
+      role="region"
+      aria-label="Revealed content"
     >
       {children}
     </motion.div>
