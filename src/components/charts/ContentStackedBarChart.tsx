@@ -41,7 +41,10 @@ export function ContentStackedBarChart({ selectedYear, selectedPlatformIds }: Co
         <BarChart data={data} margin={{ top: 16, right: 32, left: 0, bottom: 8 }} barCategoryGap={24} barGap={4}>
           <CartesianGrid strokeDasharray="3 3" stroke="#333" />
           <XAxis dataKey="platform" tick={{ fill: '#ccc', fontSize: 12 }} />
-          <YAxis tick={{ fill: '#ccc', fontSize: 12 }} />
+          <YAxis 
+            tick={{ fill: '#ccc', fontSize: 12 }}
+            label={{ value: 'Title Count', angle: -90, position: 'insideLeft', fill: '#ccc', fontSize: 13, dy: 0, textAnchor: 'middle' }}
+          />
           <Tooltip 
             contentStyle={{ background: '#18181b', border: 'none', color: '#fff' }}
             labelStyle={{ color: '#fff' }}

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ScrollReveal } from '../ui/ScrollReveal';
 import { usePlatforms } from '../../hooks/usePlatforms';
 import { PlatformToggle } from '../ui/PlatformToggle';
-import { YearFilter } from '../ui/YearFilter';
+import { YearDropdown } from '../ui/YearDropdown';
 import { EngagementBarChart } from '../charts/EngagementBarChart';
 import { EngagementCompletionBarChart } from '../charts/EngagementCompletionBarChart';
 import { EngagementHoursBarChart } from '../charts/EngagementHoursBarChart';
@@ -33,7 +33,7 @@ export function EngagementSection() {
       </ScrollReveal>
       <div className="mb-4 flex flex-wrap gap-4 items-center">
         <PlatformToggle platforms={platforms} selected={selected} onChange={setSelected} />
-        <YearFilter years={YEARS as unknown as number[]} selected={year} onChange={setYear} />
+        <YearDropdown years={YEARS as unknown as number[]} selected={year} onChange={setYear} />
       </div>
       <div aria-live="polite" className="space-y-12">
         <EngagementCompletionBarChart selectedYear={year} selectedPlatformIds={selected} />

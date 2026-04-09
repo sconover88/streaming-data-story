@@ -13,7 +13,7 @@ const SECTION_LINKS = [
 export function Header() {
   return (
     <header className="sticky top-0 z-40 w-full bg-gray-950/80 backdrop-blur border-b border-gray-800" aria-label="Site header">
-      <nav className="flex items-center justify-between max-w-5xl mx-auto px-4 py-3" aria-label="Main navigation">
+      <nav className="flex items-center justify-start max-w-5xl mx-auto px-4 py-3 gap-8" aria-label="Main navigation">
         <span className="font-bold text-lg text-white tracking-tight">Streaming Data Story</span>
         <ul className="flex gap-4">
           {SECTION_LINKS.map((section) => (

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ScrollReveal } from '../ui/ScrollReveal';
 import { usePlatforms } from '../../hooks/usePlatforms';
 import { PlatformToggle } from '../ui/PlatformToggle';
-import { YearFilter } from '../ui/YearFilter';
+import { YearDropdown } from '../ui/YearDropdown';
 import { ContentStackedBarChart } from '../charts/ContentStackedBarChart';
 import { YEARS } from '../../lib/constants';
 
@@ -31,7 +31,7 @@ export function ContentSection() {
       </ScrollReveal>
       <div className="mb-4 flex flex-wrap gap-4 items-center">
         <PlatformToggle platforms={platforms} selected={selected} onChange={setSelected} />
-        <YearFilter years={YEARS as unknown as number[]} selected={year} onChange={setYear} />
+        <YearDropdown years={YEARS as unknown as number[]} selected={year} onChange={setYear} />
       </div>
       <div aria-live="polite">
         <ContentStackedBarChart selectedYear={year} selectedPlatformIds={selected} />

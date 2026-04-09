@@ -5,6 +5,7 @@ import { PlatformToggle } from '../ui/PlatformToggle';
 import { ChurnLineChart } from '../charts/ChurnLineChart';
 import { ChurnReasonBarChart } from '../charts/ChurnReasonBarChart';
 import { CHURN_REASONS } from '../../lib/constants';
+import { ReasonDropdown } from '../ui/ReasonDropdown';
 
 export function ChurnSection() {
   const { platforms, loading } = usePlatforms();
@@ -31,29 +32,7 @@ export function ChurnSection() {
       </ScrollReveal>
       <div className="mb-4 flex flex-wrap gap-4 items-center">
         <PlatformToggle platforms={platforms} selected={selected} onChange={setSelected} />
-        <div className="flex gap-2" role="radiogroup" aria-label="Churn reason filter">
-          <button
-            type="button"
-            className={`min-w-[44px] min-h-[44px] px-3 py-2 rounded font-medium border-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-sm ${reason === null ? 'bg-white text-gray-900 border-white' : 'bg-gray-900 text-gray-100 border-gray-700'}`}
-            aria-pressed={reason === null}
-            aria-label="Show all churn reasons"
-            onClick={() => setReason(null)}
-          >
-            All Reasons
-          </button>
-          {CHURN_REASONS.map(r => (
-            <button
-              key={r}
-              type="button"
-              className={`min-w-[44px] min-h-[44px] px-3 py-2 rounded font-medium border-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-sm ${reason === r ? 'bg-white text-gray-900 border-white' : 'bg-gray-900 text-gray-100 border-gray-700'}`}
-              aria-pressed={reason === r}
-              aria-label={`Show churn reason ${r}`}
-              onClick={() => setReason(r)}
-            >
-              {r}
-            </button>
-          ))}
-        </div>
+        <ReasonDropdown value={reason} onChange={setReason} />
       </div>
       <div aria-live="polite">
         <ChurnLineChart selectedPlatformIds={selected} selectedReason={reason} />
