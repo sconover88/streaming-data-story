@@ -39,7 +39,7 @@ export function SubscriberLineChart({ selectedPlatformIds }: SubscriberLineChart
 
   return (
     <ChartWrapper title="Subscriber Growth by Platform" desc="Monthly subscribers (millions) for each platform.">
-      <div className="mb-4">
+      <div className="mb-4 text-left">
         <CustomLegend items={legendItems} />
       </div>
       <ResponsiveContainer width="100%" height={360}>

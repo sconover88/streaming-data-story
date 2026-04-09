@@ -34,7 +34,7 @@ export function ContentStackedBarChart({ selectedYear, selectedPlatformIds }: Co
 
   return (
     <ChartWrapper title="Content Library Mix" desc={`Content mix by type for each platform in ${selectedYear}`}>
-      <div className="mb-4">
+      <div className="mb-4 text-left">
         <CustomLegend items={CONTENT_TYPES.map(type => ({ label: type, color: CONTENT_TYPE_COLORS[type] || '#a259ec' }))} />
       </div>
       <ResponsiveContainer width="100%" height={360}>

@@ -58,7 +58,7 @@ export function EngagementCompletionBarChart({ selectedYear, selectedPlatformIds
 
   return (
     <ChartWrapper title="Completion Rate by Content Type" desc={`Average completion rate (%) by content type in ${selectedYear}`}>
-      <div className="mb-4">
+      <div className="mb-4 text-left">
         <CustomLegend platforms={orderedPlatforms} />
       </div>
       <ResponsiveContainer width="100%" height={360}>

@@ -58,7 +58,7 @@ export function EngagementHoursBarChart({ selectedYear, selectedPlatformIds }: E
 
   return (
     <ChartWrapper title="Hours Watched by Content Type" desc={`Average hours watched per viewer by content type in ${selectedYear}`}>
-      <div className="mb-4">
+      <div className="mb-4 text-left">
         <CustomLegend platforms={orderedPlatforms} />
       </div>
       <ResponsiveContainer width="100%" height={360}>

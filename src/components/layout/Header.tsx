@@ -20,10 +20,17 @@ export function Header() {
             <li key={section.id}>
               <a
                 href={`#${section.id}`}
-                className="text-gray-100 hover:text-white focus:text-white px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="text-gray-100 hover:text-white focus:text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition relative overflow-hidden"
                 aria-label={`Jump to ${section.label} section`}
               >
-                {section.label}
+                <span className="relative z-10">{section.label}</span>
+                <span
+                  className="absolute inset-0 z-0 opacity-0 hover:opacity-100 focus:opacity-100 transition-opacity duration-200 rounded"
+                  style={{
+                    background: '#a259ec',
+                  }}
+                  aria-hidden="true"
+                />
               </a>
             </li>
           ))}

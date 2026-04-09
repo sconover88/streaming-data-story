@@ -42,7 +42,7 @@ export function ChurnLineChart({ selectedPlatformIds, selectedReason }: ChurnLin
 
   return (
     <ChartWrapper title="Churn Rate by Platform" desc="Quarterly churn rates per platform (filtered by reason if selected)">
-      <div className="mb-4">
+      <div className="mb-4 text-left">
         <CustomLegend items={legendItems} />
       </div>
       <ResponsiveContainer width="100%" height={320}>

@@ -42,7 +42,7 @@ export function EngagementBarChart({ selectedYear, selectedPlatformIds }: Engage
 
   return (
     <ChartWrapper title="Engagement by Content Type" desc={`Completion rate and hours per viewer by content type in ${selectedYear}`}>
-      <div className="mb-4">
+      <div className="mb-4 text-left">
         <CustomLegend items={legendItems} />
       </div>
       <ResponsiveContainer width="100%" height={400}>

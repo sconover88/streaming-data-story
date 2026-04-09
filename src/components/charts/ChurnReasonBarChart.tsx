@@ -38,7 +38,7 @@ export function ChurnReasonBarChart({ selectedPlatformIds, selectedQuarter }: Ch
 
   return (
     <ChartWrapper title="Churn Reasons by Platform" desc="Churn rate by reason and platform (for selected quarter if set)">
-      <div className="mb-4">
+      <div className="mb-4 text-left">
         <CustomLegend items={legendItems} />
       </div>
       <ResponsiveContainer width="100%" height={320}>
