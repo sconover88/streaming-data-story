@@ -51,7 +51,12 @@ export function EngagementBarChart({ selectedYear, selectedPlatformIds }: Engage
           <XAxis dataKey="content_type" tick={{ fill: '#ccc', fontSize: 12 }} />
           <YAxis yAxisId="left" orientation="left" tick={{ fill: '#ccc', fontSize: 12 }} label={{ value: 'Completion %', angle: -90, position: 'insideLeft', fill: '#ccc' }} />
           <YAxis yAxisId="right" orientation="right" tick={{ fill: '#ccc', fontSize: 12 }} label={{ value: 'Hours', angle: 90, position: 'insideRight', fill: '#ccc' }} />
-          <Tooltip contentStyle={{ background: '#18181b', border: 'none', color: '#fff' }} />
+          <Tooltip 
+            contentStyle={{ background: '#18181b', border: 'none', color: '#fff' }}
+            labelStyle={{ color: '#fff' }}
+            itemStyle={{ color: '#fff' }}
+            cursor={{ fill: 'rgba(162,89,236,0.08)' }}
+          />
           {platforms.filter(p => selectedPlatformIds.includes(p.id)).map(platform => [
             <Bar
               key={platform.name + '_completion'}

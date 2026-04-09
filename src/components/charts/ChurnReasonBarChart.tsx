@@ -46,7 +46,12 @@ export function ChurnReasonBarChart({ selectedPlatformIds, selectedQuarter }: Ch
           <CartesianGrid strokeDasharray="3 3" stroke="#333" />
           <XAxis dataKey="reason" tick={{ fill: '#ccc', fontSize: 12 }} />
           <YAxis tick={{ fill: '#ccc', fontSize: 12 }} />
-          <Tooltip contentStyle={{ background: '#18181b', border: 'none', color: '#fff' }} />
+          <Tooltip 
+            contentStyle={{ background: '#18181b', border: 'none', color: '#fff' }}
+            labelStyle={{ color: '#fff' }}
+            itemStyle={{ color: '#fff' }}
+            cursor={{ fill: 'rgba(162,89,236,0.08)' }}
+          />
           {platforms.filter(p => selectedPlatformIds.includes(p.id)).map(platform => (
             <Bar
               key={platform.id}
