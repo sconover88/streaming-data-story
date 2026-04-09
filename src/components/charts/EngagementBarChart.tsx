@@ -1,5 +1,6 @@
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend, CartesianGrid } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
+import { CustomLegend } from '../ui/CustomLegend';
 import { useEngagementMetrics } from '../../hooks/useEngagementMetrics';
 import { usePlatforms } from '../../hooks/usePlatforms';
 import { ChartWrapper } from '../ui/ChartWrapper';
@@ -32,8 +33,18 @@ export function EngagementBarChart({ selectedYear, selectedPlatformIds }: Engage
     return row;
   });
 
+  const legendItems = platforms
+    .filter(p => selectedPlatformIds.includes(p.id))
+    .flatMap(p => [
+      { label: p.name + ' Completion %', color: p.color },
+      { label: p.name + ' Hours', color: p.color }
+    ]);
+
   return (
     <ChartWrapper title="Engagement by Content Type" desc={`Completion rate and hours per viewer by content type in ${selectedYear}`}>
+      <div className="mb-4">
+        <CustomLegend items={legendItems} />
+      </div>
       <ResponsiveContainer width="100%" height={400}>
         <BarChart data={data} margin={{ top: 16, right: 32, left: 0, bottom: 8 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#333" />
@@ -41,7 +52,6 @@ export function EngagementBarChart({ selectedYear, selectedPlatformIds }: Engage
           <YAxis yAxisId="left" orientation="left" tick={{ fill: '#ccc', fontSize: 12 }} label={{ value: 'Completion %', angle: -90, position: 'insideLeft', fill: '#ccc' }} />
           <YAxis yAxisId="right" orientation="right" tick={{ fill: '#ccc', fontSize: 12 }} label={{ value: 'Hours', angle: 90, position: 'insideRight', fill: '#ccc' }} />
           <Tooltip contentStyle={{ background: '#18181b', border: 'none', color: '#fff' }} />
-          <Legend wrapperStyle={{ color: '#fff' }} />
           {platforms.filter(p => selectedPlatformIds.includes(p.id)).map(platform => [
             <Bar
               key={platform.name + '_completion'}
@@ -51,7 +61,7 @@ export function EngagementBarChart({ selectedYear, selectedPlatformIds }: Engage
               fill={platform.color}
               opacity={0.7}
               isAnimationActive={false}
-            />,
+            />, 
             <Bar
               key={platform.name + '_hours'}
               yAxisId="right"

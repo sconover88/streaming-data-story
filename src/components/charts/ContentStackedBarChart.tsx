@@ -1,5 +1,6 @@
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend, CartesianGrid } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
+import { CustomLegend } from '../ui/CustomLegend';
 import { useContentLibrary } from '../../hooks/useContentLibrary';
 import { usePlatforms } from '../../hooks/usePlatforms';
 import { ChartWrapper } from '../ui/ChartWrapper';
@@ -33,6 +34,9 @@ export function ContentStackedBarChart({ selectedYear, selectedPlatformIds }: Co
 
   return (
     <ChartWrapper title="Content Library Mix" desc={`Content mix by type for each platform in ${selectedYear}`}>
+      <div className="mb-4">
+        <CustomLegend items={CONTENT_TYPES.map(type => ({ label: type, color: CONTENT_TYPE_COLORS[type] || '#a259ec' }))} />
+      </div>
       <ResponsiveContainer width="100%" height={360}>
         <BarChart data={data} margin={{ top: 16, right: 32, left: 0, bottom: 8 }} barCategoryGap={24} barGap={4}>
           <CartesianGrid strokeDasharray="3 3" stroke="#333" />
@@ -44,7 +48,6 @@ export function ContentStackedBarChart({ selectedYear, selectedPlatformIds }: Co
             itemStyle={{ color: '#fff' }}
             cursor={{ fill: 'rgba(162,89,236,0.08)' }}
           />
-          <Legend wrapperStyle={{ color: '#fff' }} />
           {CONTENT_TYPES.map(type => (
             <Bar
               key={type}
@@ -53,7 +56,6 @@ export function ContentStackedBarChart({ selectedYear, selectedPlatformIds }: Co
               isAnimationActive={false}
               style={{ pointerEvents: 'none' }}
               name={type}
-              // No stackId: grouped bars
             />
           ))}
         </BarChart>
