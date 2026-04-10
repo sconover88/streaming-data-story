@@ -1,9 +1,7 @@
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
-import { CustomLegend } from '../ui/CustomLegend';
+import { LineChartBase } from './LineChartBase';
 import { useSubscriberData } from '../../hooks/useSubscriberData';
 import { usePlatforms } from '../../hooks/usePlatforms';
-import { ChartWrapper } from '../ui/ChartWrapper';
 
 interface SubscriberLineChartProps {
   selectedPlatformIds: number[];
@@ -37,33 +35,19 @@ export function SubscriberLineChart({ selectedPlatformIds }: SubscriberLineChart
     .filter(p => selectedPlatformIds.includes(p.id))
     .map(p => ({ label: p.name, color: p.color }));
 
+  const lines = platforms
+    .filter(p => selectedPlatformIds.includes(p.id))
+    .map(p => ({ key: p.name, color: p.color }));
+
   return (
-    <ChartWrapper title="Subscriber Growth by Platform" desc="Monthly subscribers (millions) for each platform.">
-      <div className="mb-4 text-left">
-        <CustomLegend items={legendItems} />
-      </div>
-      <ResponsiveContainer width="100%" height={360}>
-        <LineChart data={data} margin={{ top: 16, right: 32, left: 0, bottom: 8 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#333" />
-          <XAxis dataKey="month" tick={{ fill: '#ccc', fontSize: 12 }} />
-          <YAxis 
-            tick={{ fill: '#ccc', fontSize: 12 }}
-            label={{ value: 'Subscribers (millions)', angle: -90, position: 'insideLeft', fill: '#ccc', fontSize: 13, dy: 0, textAnchor: 'middle' }}
-          />
-          <Tooltip contentStyle={{ background: '#18181b', border: 'none', color: '#fff' }} />
-          {platforms.filter(p => selectedPlatformIds.includes(p.id)).map(p => (
-            <Line
-              key={p.id}
-              type="monotone"
-              dataKey={p.name}
-              stroke={p.color}
-              strokeWidth={2}
-              dot={false}
-              isAnimationActive={false}
-            />
-          ))}
-        </LineChart>
-      </ResponsiveContainer>
-    </ChartWrapper>
+    <LineChartBase
+      title="Subscriber Growth by Platform"
+      desc="Monthly subscribers (millions) for each platform."
+      data={data}
+      legendItems={legendItems}
+      yAxisLabel="Subscribers (millions)"
+      lines={lines}
+      height={360}
+    />
   );
 }
