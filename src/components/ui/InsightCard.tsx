@@ -2,7 +2,7 @@ import React from 'react';
 
 interface InsightCardProps {
   title: string;
-  value: string | number;
+  value: React.ReactNode;
   description?: string;
   icon?: React.ReactNode;
 }
