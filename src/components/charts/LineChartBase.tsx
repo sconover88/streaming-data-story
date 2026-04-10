@@ -24,9 +24,7 @@ export function LineChartBase({
 }: LineChartBaseProps) {
   return (
     <ChartWrapper title={title} desc={desc}>
-      <div className="mb-4 text-left">
-        <CustomLegend items={legendItems} />
-      </div>
+      {/* Legend removed as per user request */}
       <ResponsiveContainer width="100%" height={height}>
         <LineChart data={data} margin={{ top: 16, right: 32, left: 0, bottom: 8 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#333" />
