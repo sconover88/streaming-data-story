@@ -32,15 +32,9 @@ export function ChurnReasonBarChart({ selectedPlatformIds, selectedQuarter }: Ch
     return row;
   });
 
-  const legendItems = platforms
-    .filter(p => selectedPlatformIds.includes(p.id))
-    .map(p => ({ label: p.name, color: p.color }));
-
   return (
     <ChartWrapper title="Churn Reasons by Platform" desc="Churn rate by reason and platform (for selected quarter if set)">
-      <div className="mb-4 text-left">
-        <CustomLegend items={legendItems} />
-      </div>
+      {/* Legend removed as per user request */}
       <ResponsiveContainer width="100%" height={320}>
         <BarChart data={data} margin={{ top: 16, right: 32, left: 0, bottom: 8 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#333" />

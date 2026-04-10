@@ -58,9 +58,7 @@ export function EngagementCompletionBarChart({ selectedYear, selectedPlatformIds
 
   return (
     <ChartWrapper title="Completion Rate by Content Type" desc={`Average completion rate (%) by content type in ${selectedYear}`}>
-      <div className="mb-4 text-left">
-        <CustomLegend platforms={orderedPlatforms} />
-      </div>
+      {/* Legend removed as per user request */}
       <ResponsiveContainer width="100%" height={360}>
         <BarChart data={data} margin={{ top: 16, right: 32, left: 0, bottom: 8 }} barCategoryGap={24} barGap={4}>
           <CartesianGrid strokeDasharray="3 3" stroke="#333" />
