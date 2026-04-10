@@ -4,7 +4,7 @@ import { HeroIndustryBackground } from '../ui/HeroIndustryBackground';
 
 export function HeroSection() {
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col justify-center items-center text-center bg-gradient-to-b from-gray-950 to-gray-900 py-24 overflow-hidden">
+    <section id="hero" className="relative w-screen h-screen flex flex-col justify-center items-center text-center bg-gradient-to-b from-gray-950 to-gray-900 overflow-hidden">
       <HeroIndustryBackground />
       <div className="relative z-10 w-full flex flex-col items-center">
         <ScrollReveal>

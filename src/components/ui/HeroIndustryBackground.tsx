@@ -4,8 +4,9 @@ import React from 'react';
 export function HeroIndustryBackground() {
   return (
     <svg
-      className="absolute inset-0 w-full h-full z-0 pointer-events-none"
+      className="absolute left-0 top-0 w-screen h-screen z-0 pointer-events-none"
       viewBox="0 0 1440 900"
+      preserveAspectRatio="none"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
