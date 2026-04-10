@@ -35,3 +35,4 @@ export function usePlatforms(): UsePlatformsResult {
 
   return { platforms, loading, error };
 }
+// This is a test comment to trigger a new commit
