@@ -17,7 +17,7 @@ export function usePlatforms(): UsePlatformsResult {
     let isMounted = true;
     setLoading(true);
     supabase
-      .from<Platform>('platforms')
+      .from<Platform, Platform>('platforms')
       .select('*')
       .then(({ data, error }) => {
         if (!isMounted) return;
